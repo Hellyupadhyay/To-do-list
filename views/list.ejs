@@ -1,0 +1,29 @@
+  <%- include("header") -%>
+
+    <div class="container">
+      <h1>It's a <%= kindOfDay %>!</h1>
+      <% for (var i = 0; i < n; i++) { %>
+        <div class="item">
+          <input type="checkbox" name="" id="item-<%= i %>" onchange="strikeThrough('item-<%= i %>')">
+          <p id="text-<%= i %>"><%= newlistItem[i] %></p>
+        </div>
+      <% } %>
+      <form class="" action="/" method="post">
+        <input type="text" name="newitem" placeholder="Add a task" autocomplete="off">
+        <button type="submit" name="button">+</button>
+      </form>
+    </div>
+    <script>
+      function strikeThrough(id) {
+        var checkbox = document.getElementById(id);
+        var textId = "text-" + id.split("-")[1];
+        var text = document.getElementById(textId);
+        if (checkbox.checked) {
+          text.style.textDecoration = "line-through";
+        } else {
+          text.style.textDecoration = "none";
+        }
+      }
+    </script>
+
+    <%- include("footer") -%>
